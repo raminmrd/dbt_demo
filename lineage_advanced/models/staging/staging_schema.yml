@@ -1,0 +1,90 @@
+version: 2
+
+models:
+  - name: stg_patients
+    description: Cleaned patient demographic and contact information
+    columns:
+      - name: patient_id
+        description: Unique identifier for each patient
+        tests:
+          - unique
+          - not_null
+      - name: age
+        description: Calculated patient age
+        tests:
+          - not_null
+      - name: email
+        description: Patient email address
+        tests:
+          - not_null
+  
+  - name: stg_doctors
+    description: Healthcare provider information
+    columns:
+      - name: doctor_id
+        tests:
+          - unique
+          - not_null
+      - name: specialty
+        tests:
+          - not_null
+  
+  - name: stg_appointments
+    description: Patient appointment records
+    columns:
+      - name: appointment_id
+        tests:
+          - unique
+          - not_null
+      - name: patient_id
+        description: Foreign key to patients
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_patients')
+              field: patient_id
+      - name: doctor_id
+        description: Foreign key to doctors
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_doctors')
+              field: doctor_id
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['Scheduled', 'Completed', 'Cancelled', 'No-show']
+  
+  - name: stg_diagnoses
+    columns:
+      - name: diagnosis_id
+        tests:
+          - unique
+          - not_null
+      - name: severity
+        tests:
+          - accepted_values:
+              values: ['None', 'Mild', 'Moderate', 'Severe']
+  
+  - name: stg_prescriptions
+    columns:
+      - name: prescription_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['Active', 'Completed', 'Cancelled']
+  
+  - name: stg_insurance_claims
+    columns:
+      - name: claim_id
+        tests:
+          - unique
+          - not_null
+      - name: claim_status
+        tests:
+          - accepted_values:
+              values: ['Approved', 'Denied', 'Pending']
+

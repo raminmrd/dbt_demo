@@ -1,0 +1,10 @@
+patient_id,first_name,last_name,date_of_birth,gender,email,phone,address,city,state,zip_code,insurance_provider,registration_date
+1001,Sarah,Johnson,1985-03-15,F,sarah.j@email.com,555-0101,123 Main St,Boston,MA,02101,BlueCross,2023-01-10
+1002,Michael,Chen,1978-07-22,M,m.chen@email.com,555-0102,456 Oak Ave,Cambridge,MA,02138,Aetna,2023-01-15
+1003,Emily,Rodriguez,1992-11-08,F,emily.r@email.com,555-0103,789 Pine Rd,Somerville,MA,02143,UnitedHealth,2023-02-01
+1004,James,Williams,1965-05-30,M,james.w@email.com,555-0104,321 Elm St,Boston,MA,02102,Medicare,2023-02-10
+1005,Lisa,Brown,1988-09-12,F,lisa.b@email.com,555-0105,654 Maple Dr,Brookline,MA,02445,Cigna,2023-02-15
+1006,David,Martinez,1995-12-25,M,david.m@email.com,555-0106,987 Cedar Ln,Newton,MA,02458,BlueCross,2023-03-01
+1007,Jennifer,Taylor,1982-04-18,F,jen.t@email.com,555-0107,147 Birch St,Quincy,MA,02169,Aetna,2023-03-05
+1008,Robert,Anderson,1970-08-07,M,rob.a@email.com,555-0108,258 Spruce Ave,Cambridge,MA,02139,UnitedHealth,2023-03-10
+

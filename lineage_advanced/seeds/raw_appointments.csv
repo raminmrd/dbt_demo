@@ -1,0 +1,16 @@
+appointment_id,patient_id,doctor_id,appointment_date,appointment_time,appointment_type,status,duration_minutes,hospital_id
+5001,1001,101,2024-01-15,09:00:00,Initial Consultation,Completed,30,1
+5002,1002,102,2024-01-15,10:30:00,Follow-up,Completed,20,1
+5003,1003,103,2024-01-16,14:00:00,Annual Checkup,Completed,45,1
+5004,1001,101,2024-01-20,11:00:00,Follow-up,Completed,20,1
+5005,1004,105,2024-01-22,09:30:00,Initial Consultation,Completed,30,1
+5006,1005,104,2024-01-25,15:00:00,Surgery Consultation,Completed,60,2
+5007,1006,106,2024-02-01,08:00:00,Emergency,Completed,90,2
+5008,1007,103,2024-02-05,10:00:00,Annual Checkup,Completed,45,1
+5009,1002,102,2024-02-10,13:00:00,Follow-up,Completed,20,1
+5010,1008,105,2024-02-15,11:30:00,Initial Consultation,Completed,30,1
+5011,1003,107,2024-02-20,14:30:00,Imaging,Completed,30,1
+5012,1001,101,2024-03-01,09:00:00,Follow-up,No-show,20,1
+5013,1005,104,2024-03-05,10:00:00,Post-op,Scheduled,30,2
+5014,1006,106,2024-03-10,15:30:00,Follow-up,Scheduled,20,2
+

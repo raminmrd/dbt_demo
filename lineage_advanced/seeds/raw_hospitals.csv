@@ -1,0 +1,5 @@
+hospital_id,hospital_name,address,city,state,zip_code,phone,bed_capacity,trauma_level
+1,Massachusetts General Hospital,55 Fruit St,Boston,MA,02114,617-726-2000,999,Level I
+2,Brigham and Women's Hospital,75 Francis St,Boston,MA,02115,617-732-5500,793,Level I
+3,Beth Israel Deaconess Medical Center,330 Brookline Ave,Boston,MA,02215,617-667-7000,631,Level I
+

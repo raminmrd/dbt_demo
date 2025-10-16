@@ -1,0 +1,11 @@
+test_id,appointment_id,patient_id,test_type,test_name,test_date,result_value,result_unit,reference_range,status,abnormal_flag
+6001,5001,1001,Blood,Cholesterol Total,2024-01-15,245,mg/dL,< 200,Completed,true
+6002,5001,1001,Blood,HDL Cholesterol,2024-01-15,42,mg/dL,> 40,Completed,false
+6003,5002,1002,Blood,Complete Blood Count,2024-01-15,Normal,N/A,N/A,Completed,false
+6004,5005,1004,Blood,Glucose Fasting,2024-01-22,142,mg/dL,70-100,Completed,true
+6005,5005,1004,Blood,HbA1c,2024-01-22,7.2,%,< 5.7,Completed,true
+6006,5007,1006,Imaging,CT Scan Head,2024-02-01,No significant findings,N/A,N/A,Completed,false
+6007,5010,1008,Blood,Blood Pressure,2024-02-15,145/92,mmHg,< 120/80,Completed,true
+6008,5011,1003,Imaging,Chest X-Ray,2024-02-20,Pneumonia confirmed,N/A,N/A,Completed,true
+6009,5011,1003,Blood,White Blood Cell Count,2024-02-20,14500,cells/mcL,4500-11000,Completed,true
+

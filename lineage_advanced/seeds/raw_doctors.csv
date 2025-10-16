@@ -1,0 +1,9 @@
+doctor_id,first_name,last_name,specialty,license_number,hire_date,department,hospital_id,phone,email
+101,Amanda,Singh,Cardiology,MD-12345,2018-06-01,Cardiology,1,555-1001,a.singh@hospital.com
+102,Thomas,Lee,Neurology,MD-12346,2019-03-15,Neurology,1,555-1002,t.lee@hospital.com
+103,Maria,Garcia,Pediatrics,MD-12347,2017-09-01,Pediatrics,1,555-1003,m.garcia@hospital.com
+104,William,Kumar,Orthopedics,MD-12348,2020-01-10,Orthopedics,2,555-1004,w.kumar@hospital.com
+105,Sarah,Davis,Internal Medicine,MD-12349,2016-11-20,Internal Medicine,1,555-1005,s.davis@hospital.com
+106,John,Patel,Emergency Medicine,MD-12350,2021-02-15,Emergency,2,555-1006,j.patel@hospital.com
+107,Rachel,Thompson,Radiology,MD-12351,2019-07-01,Radiology,1,555-1007,r.thompson@hospital.com
+

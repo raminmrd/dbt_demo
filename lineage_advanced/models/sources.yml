@@ -1,0 +1,62 @@
+version: 2
+
+# SOURCES: Define and document raw data sources
+# This allows dbt to understand data lineage from the source level
+sources:
+  - name: hospital_raw
+    description: Raw hospital management system data
+    schema: main
+    tables:
+      - name: raw_patients
+        description: Patient demographic and contact information
+        columns:
+          - name: patient_id
+            description: Unique patient identifier
+            tests:
+              - unique
+              - not_null
+          
+      - name: raw_doctors
+        description: Healthcare provider information
+        columns:
+          - name: doctor_id
+            tests:
+              - unique
+              - not_null
+      
+      - name: raw_hospitals
+        description: Hospital facility information
+        
+      - name: raw_appointments
+        description: Patient appointment records
+        columns:
+          - name: appointment_id
+            tests:
+              - unique
+              - not_null
+      
+      - name: raw_diagnoses
+        description: Patient diagnosis records
+      
+      - name: raw_medications
+        description: Medication catalog
+        columns:
+          - name: medication_id
+            tests:
+              - unique
+              - not_null
+      
+      - name: raw_prescriptions
+        description: Prescription records
+      
+      - name: raw_lab_tests
+        description: Laboratory and imaging test results
+      
+      - name: raw_insurance_claims
+        description: Insurance billing and claims data
+        columns:
+          - name: claim_id
+            tests:
+              - unique
+              - not_null
+

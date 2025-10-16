@@ -1,0 +1,12 @@
+diagnosis_id,appointment_id,patient_id,doctor_id,diagnosis_code,diagnosis_name,severity,diagnosis_date,notes
+3001,5001,1001,101,I50.9,Heart Failure,Moderate,2024-01-15,Patient showing signs of congestive heart failure
+3002,5002,1002,102,G43.909,Migraine,Mild,2024-01-15,Recurring migraine headaches
+3003,5003,1003,103,J06.9,Upper Respiratory Infection,Mild,2024-01-16,Common cold symptoms
+3004,5005,1004,105,E11.9,Type 2 Diabetes,Moderate,2024-01-22,Diabetes management
+3005,5006,1005,104,M25.511,Pain in Right Shoulder,Moderate,2024-01-25,Rotator cuff injury suspected
+3006,5007,1006,106,S06.0,Concussion,Moderate,2024-02-01,Head injury from fall
+3007,5008,1007,103,Z00.129,Routine Health Exam,None,2024-02-05,Annual checkup - healthy
+3008,5009,1002,102,G43.909,Migraine,Mild,2024-02-10,Follow-up - improving
+3009,5010,1008,105,I10,Hypertension,Moderate,2024-02-15,High blood pressure
+3010,5011,1003,107,J18.9,Pneumonia,Severe,2024-02-20,Bacterial pneumonia
+

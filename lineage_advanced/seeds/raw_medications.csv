@@ -1,0 +1,10 @@
+medication_id,medication_name,generic_name,drug_class,manufacturer,unit_cost,requires_prescription
+201,Lisinopril,Lisinopril,ACE Inhibitor,Merck,15.50,true
+202,Metformin,Metformin,Antidiabetic,Teva,8.75,true
+203,Ibuprofen,Ibuprofen,NSAID,Generic,5.00,false
+204,Sumatriptan,Sumatriptan,Antimigraine,GSK,45.00,true
+205,Amoxicillin,Amoxicillin,Antibiotic,Sandoz,12.00,true
+206,Omeprazole,Omeprazole,Proton Pump Inhibitor,AstraZeneca,18.50,true
+207,Atorvastatin,Atorvastatin,Statin,Pfizer,22.00,true
+208,Acetaminophen,Acetaminophen,Analgesic,Generic,4.50,false
+

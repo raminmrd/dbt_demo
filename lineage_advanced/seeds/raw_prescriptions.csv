@@ -1,0 +1,11 @@
+prescription_id,appointment_id,patient_id,doctor_id,medication_id,dosage,frequency,duration_days,prescription_date,refills_allowed,status
+4001,5001,1001,101,201,10mg,Once daily,30,2024-01-15,3,Active
+4002,5001,1001,101,207,20mg,Once daily,30,2024-01-15,3,Active
+4003,5002,1002,102,204,50mg,As needed,30,2024-01-15,2,Active
+4004,5003,1003,103,205,500mg,Three times daily,10,2024-01-16,0,Completed
+4005,5005,1004,105,202,500mg,Twice daily,90,2024-01-22,3,Active
+4006,5006,1005,104,203,400mg,As needed,30,2024-01-25,1,Active
+4007,5007,1006,106,208,500mg,Every 6 hours,7,2024-02-01,0,Active
+4008,5010,1008,105,201,5mg,Once daily,30,2024-02-15,3,Active
+4009,5011,1003,107,205,875mg,Twice daily,14,2024-02-20,0,Active
+

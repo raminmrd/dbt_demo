@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: dim_patients
+    description: Patient dimension table with visit history
+    columns:
+      - name: patient_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: patient_category
+        description: Patient engagement level
+        tests:
+          - accepted_values:
+              values: ['Registered', 'New', 'Regular', 'Frequent']
+  
+  - name: dim_doctors
+    description: Doctor dimension table with performance metrics
+    columns:
+      - name: doctor_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+  
+  - name: fct_appointments
+    description: Fact table with appointment-level details and metrics
+    columns:
+      - name: appointment_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: patient_id
+        description: Foreign key to dim_patients
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_patients')
+              field: patient_id
+      - name: doctor_id
+        description: Foreign key to dim_doctors
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_doctors')
+              field: doctor_id
+  
+  - name: fct_patient_health_summary
+    description: Patient health summary with risk assessment
+    columns:
+      - name: patient_id
+        tests:
+          - unique
+          - not_null
+      - name: risk_category
+        tests:
+          - accepted_values:
+              values: ['Low Risk', 'Moderate Risk', 'High Risk']
+  
+  - name: fct_financial_metrics
+    description: Daily financial metrics (incremental model)
+    config:
+      materialized: incremental
+    columns:
+      - name: metric_date
+        description: Date of the metrics
+        tests:
+          - unique
+          - not_null
+

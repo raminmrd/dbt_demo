@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Lineage Visualization</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        #info {
+            background-color: #ecf0f1;
+            padding: 15px;
+            margin: 0;
+        }
+        #mynetwork {
+            width: 100%;
+            height: 700px;
+            border: 1px solid lightgray;
+        }
+        .legend {
+            padding: 15px;
+            background-color: #f8f9fa;
+        }
+        .legend-item {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .legend-color {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        #stats {
+            padding: 15px;
+            background-color: #fff;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stat-item {
+            display: inline-block;
+            margin-right: 30px;
+            font-size: 14px;
+        }
+        .stat-value {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>📊 Data Lineage Visualization</h1>
+        <p>Interactive view of your dbt data pipeline</p>
+    </div>
+    
+    <div id="info">
+        <div id="stats">
+            <div class="stat-item">
+                <span class="stat-value">13</span> Total Nodes
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">13</span> Dependencies
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">4</span> Seeds
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">9</span> Models
+            </div>
+        </div>
+    </div>
+    
+    <div class="legend">
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #90EE90;"></span>
+            <span>Seeds (Raw Data)</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #87CEEB;"></span>
+            <span>Models (Transformations)</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color" style="background-color: #FFD700;"></span>
+            <span>Sources</span>
+        </div>
+    </div>
+    
+    <div id="mynetwork"></div>
+    
+    <script type="text/javascript">
+        // Create nodes and edges
+        var nodes = new vis.DataSet([
+        {
+                "id": "model.lineage_demo.stg_products",
+                "label": "stg_products",
+                "title": "stg_products<br>Type: model",
+                "color": "#87CEEB",
+                "type": "model"
+        },
+        {
+                "id": "model.lineage_demo.stg_customers",
+                "label": "stg_customers",
+                "title": "stg_customers<br>Type: model",
+                "color": "#87CEEB",
+                "type": "model"
+        },
+        {
+                "id": "model.lineage_demo.stg_orders",
+                "label": "stg_orders",
+                "title": "stg_orders<br>Type: model",
+                "color": "#87CEEB",
+                "type": "model"
+        },
+        {
+                "id": "model.lineage_demo.stg_order_items",
+                "label": "stg_order_items",
+                "title": "stg_order_items<br>Type: model",
+                "color": "#87CEEB",
+                "type": "model"
+        },
+        {
+                "id": "model.lineage_demo.dim_customers",
+                "label": "dim_customers",
+                "title": "dim_customers<br>Type: model",
+                "color": "#87CEEB",
+                "type": "model"
+        },
+        {
+                "id": "model.lineage_demo.fct_customer_metrics",
+                "label": "fct_customer_metrics",
+                "title": "fct_customer_metrics<br>Type: model",
+                "color": "#87CEEB",
+                "type": "model"
+        },
+        {
+                "id": "model.lineage_demo.fct_orders",
+                "label": "fct_orders",
+                "title": "fct_orders<br>Type: model",
+                "color": "#87CEEB",
+                "type": "model"
+        },
+        {
+                "id": "model.lineage_demo.int_orders_with_items",
+                "label": "int_orders_with_items",
+                "title": "int_orders_with_items<br>Type: model",
+                "color": "#87CEEB",
+                "type": "model"
+        },
+        {
+                "id": "model.lineage_demo.int_customer_orders",
+                "label": "int_customer_orders",
+                "title": "int_customer_orders<br>Type: model",
+                "color": "#87CEEB",
+                "type": "model"
+        },
+        {
+                "id": "seed.lineage_demo.raw_customers",
+                "label": "raw_customers",
+                "title": "raw_customers<br>Type: seed",
+                "color": "#90EE90",
+                "type": "seed"
+        },
+        {
+                "id": "seed.lineage_demo.raw_order_items",
+                "label": "raw_order_items",
+                "title": "raw_order_items<br>Type: seed",
+                "color": "#90EE90",
+                "type": "seed"
+        },
+        {
+                "id": "seed.lineage_demo.raw_orders",
+                "label": "raw_orders",
+                "title": "raw_orders<br>Type: seed",
+                "color": "#90EE90",
+                "type": "seed"
+        },
+        {
+                "id": "seed.lineage_demo.raw_products",
+                "label": "raw_products",
+                "title": "raw_products<br>Type: seed",
+                "color": "#90EE90",
+                "type": "seed"
+        }
+]);
+        
+        var edges = new vis.DataSet([
+        {
+                "from": "model.lineage_demo.stg_products",
+                "to": "model.lineage_demo.int_orders_with_items"
+        },
+        {
+                "from": "model.lineage_demo.stg_customers",
+                "to": "model.lineage_demo.int_customer_orders"
+        },
+        {
+                "from": "model.lineage_demo.stg_orders",
+                "to": "model.lineage_demo.int_orders_with_items"
+        },
+        {
+                "from": "model.lineage_demo.stg_orders",
+                "to": "model.lineage_demo.int_customer_orders"
+        },
+        {
+                "from": "model.lineage_demo.stg_order_items",
+                "to": "model.lineage_demo.int_orders_with_items"
+        },
+        {
+                "from": "model.lineage_demo.dim_customers",
+                "to": "model.lineage_demo.fct_customer_metrics"
+        },
+        {
+                "from": "model.lineage_demo.fct_orders",
+                "to": "model.lineage_demo.fct_customer_metrics"
+        },
+        {
+                "from": "model.lineage_demo.int_orders_with_items",
+                "to": "model.lineage_demo.fct_orders"
+        },
+        {
+                "from": "model.lineage_demo.int_customer_orders",
+                "to": "model.lineage_demo.dim_customers"
+        },
+        {
+                "from": "seed.lineage_demo.raw_customers",
+                "to": "model.lineage_demo.stg_customers"
+        },
+        {
+                "from": "seed.lineage_demo.raw_order_items",
+                "to": "model.lineage_demo.stg_order_items"
+        },
+        {
+                "from": "seed.lineage_demo.raw_orders",
+                "to": "model.lineage_demo.stg_orders"
+        },
+        {
+                "from": "seed.lineage_demo.raw_products",
+                "to": "model.lineage_demo.stg_products"
+        }
+]);
+        
+        // Create network
+        var container = document.getElementById('mynetwork');
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        
+        var options = {
+            nodes: {
+                shape: 'dot',
+                size: 20,
+                font: {
+                    size: 14,
+                    face: 'Arial'
+                },
+                borderWidth: 2,
+                borderWidthSelected: 4
+            },
+            edges: {
+                arrows: {
+                    to: {
+                        enabled: true,
+                        scaleFactor: 1
+                    }
+                },
+                color: {
+                    color: '#848484',
+                    highlight: '#2c3e50'
+                },
+                width: 2,
+                smooth: {
+                    type: 'cubicBezier',
+                    roundness: 0.2
+                }
+            },
+            layout: {
+                hierarchical: {
+                    direction: 'LR',
+                    sortMethod: 'directed',
+                    levelSeparation: 200,
+                    nodeSpacing: 150
+                }
+            },
+            physics: {
+                enabled: false
+            },
+            interaction: {
+                hover: true,
+                tooltipDelay: 200,
+                navigationButtons: true,
+                keyboard: true
+            }
+        };
+        
+        var network = new vis.Network(container, data, options);
+        
+        // Add click event
+        network.on("click", function (params) {
+            if (params.nodes.length > 0) {
+                var nodeId = params.nodes[0];
+                var node = nodes.get(nodeId);
+                alert("Node: " + node.label + "\nType: " + node.type);
+            }
+        });
+    </script>
+    
+    <div style="padding: 20px; background-color: #f8f9fa; margin-top: 10px;">
+        <h3>💡 Tips:</h3>
+        <ul>
+            <li>Click and drag to pan around the visualization</li>
+            <li>Scroll to zoom in and out</li>
+            <li>Click on a node to see details</li>
+            <li>Hover over nodes to see tooltips</li>
+            <li>Use the navigation buttons in the bottom right</li>
+        </ul>
+    </div>
+</body>
+</html>
