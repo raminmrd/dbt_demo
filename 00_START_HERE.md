@@ -2,6 +2,32 @@
 
 Welcome to your **dbt Data Lineage Visualization** project with **TWO COMPLETE EXAMPLES**!
 
+## ⚙️ Setup (First Time Only)
+
+```bash
+# Create dbt profiles
+mkdir -p ~/.dbt
+cat > ~/.dbt/profiles.yml << 'EOF'
+lineage_demo:
+  outputs:
+    dev:
+      type: duckdb
+      path: dev.duckdb
+  target: dev
+lineage_advanced:
+  outputs:
+    dev:
+      type: duckdb
+      path: dev.duckdb
+  target: dev
+EOF
+
+# Install dependencies
+python3 -m venv venv
+source venv/bin/activate
+pip install dbt-core dbt-duckdb networkx matplotlib
+```
+
 ## ⚡ Quick Start (30 seconds)
 
 ```bash

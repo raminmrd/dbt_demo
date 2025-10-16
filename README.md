@@ -22,29 +22,35 @@ This project demonstrates data lineage visualization using dbt-core with DuckDB,
 - **Incremental model**: For efficient large-scale processing
 - **86+ nodes** total in lineage graph (including tests)
 
-## 🏗️ Architecture
+## ⚙️ Setup (First Time Only)
 
+After cloning, create dbt profiles:
+
+```bash
+mkdir -p ~/.dbt
+cat > ~/.dbt/profiles.yml << 'EOF'
+lineage_demo:
+  outputs:
+    dev:
+      type: duckdb
+      path: dev.duckdb
+  target: dev
+
+lineage_advanced:
+  outputs:
+    dev:
+      type: duckdb
+      path: dev.duckdb
+  target: dev
+EOF
 ```
-Raw Data (Seeds)
-├── raw_customers
-├── raw_orders
-├── raw_products
-└── raw_order_items
-    ↓
-Staging Models
-├── stg_customers
-├── stg_orders
-├── stg_products
-└── stg_order_items
-    ↓
-Intermediate Models
-├── int_customer_orders
-└── int_orders_with_items
-    ↓
-Marts (Analytics-Ready)
-├── dim_customers
-├── fct_orders
-└── fct_customer_metrics
+
+Install dependencies:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install dbt-core dbt-duckdb networkx matplotlib
 ```
 
 ## 🚀 Quick Start
